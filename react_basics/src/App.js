@@ -1,8 +1,12 @@
+import { Posts } from "./pages/posts";
+import { Admin } from "./pages/admin";
+import { Home } from "./pages/home";
 import { useState } from "react";
-import { Admin } from "./components/admin";
 
 export function App() {
   const [posts, setPosts] = useState([]);
+  const [pageName, setPageName] = useState("");
+  const [user, setUser] = useState(null);
 
   const addPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -11,22 +15,39 @@ export function App() {
   const clearPosts = () => {
     setPosts([]);
   };
-  console.log(posts);
+
+  const signIn = () => {
+    setUser({ name: "Alex" });
+  };
+
+  const renderPageByPageName = () => {
+    switch (pageName) {
+      case "home":
+        return <Home />;
+      case "posts":
+        return <Posts posts={posts} />;
+      case "admin":
+        return <Admin onPostSubmit={addPost} onClearList={clearPosts} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div>
-      <p> you have a :{posts.length} items</p>
+      <button onClick={() => setPageName("home")}>Home</button>
+      <button onClick={() => setPageName("posts")}>Posts</button>
+      <button onClick={() => setPageName("admin")}>Admin</button>
 
-      <Admin addPost={addPost} clearPosts={clearPosts} />
-      <div>
-        {posts.map((item) => (
-          <div>
-            <p>
-              {item.title} {item.content}
-            </p>
-          </div>
-        ))}
-      </div>
+      {/*{renderPageByPageName()}*/}
+
+      {pageName === "home" && <Home />}
+      {pageName === "posts" && <Posts posts={posts} />}
+      {pageName === "admin" && (
+        <Admin onPostSubmit={addPost} onClearList={clearPosts} />
+      )}
+
+      {/*{ user ? <h3>Hello {user.name}</h3> : <button onClick={signIn}>Sign In</button>}*/}
     </div>
   );
 }
