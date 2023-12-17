@@ -1,16 +1,18 @@
-import {useState} from "react";
-
-const PostCardStyle = {
-  border: '2px solid black'
-}
+import {Link} from "react-router-dom";
 
 export function PostCard({ singlePost }) {
-  const [isVisible, setIsVisible] = useState(false);
-
   return (
-      <div style={PostCardStyle}>
-        <h2 onClick={() => setIsVisible(!isVisible)}>{singlePost.title}</h2>
-        {isVisible && <p>{singlePost.body}</p>}
+      <div className='card'>
+        <div className='card-header'>
+          {singlePost.title}
+        </div>
+        <div className='card-body'>
+          {singlePost.body}
+        </div>
+        <Link to={ `/posts/${singlePost.id}` }
+              className='btn btn-primary'>
+          Read more
+        </Link>
       </div>
   )
 }

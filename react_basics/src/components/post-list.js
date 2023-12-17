@@ -1,15 +1,7 @@
-import {PostCard} from "./post-card";
-
-/**
- * Renders a list of post cards based on the given feed.
- *
- * @param {Array} feed - The array of posts to render.
- * @return {React.Node} A div element containing the rendered post cards.
- */
-export function PostLIst({ feed }) {
+export function PostLIst({ children }) {
   return (
-      <div>
-        {feed.map((post) => <PostCard singlePost={post} />)}
-      </div>
+      <ul className="list-group">
+        {children}
+      </ul>
   );
 }
