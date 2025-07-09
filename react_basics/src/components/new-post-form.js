@@ -1,5 +1,3 @@
-import {PostLIst} from "./post-list";
-
 export function NewPostForm() {
   return (
     <form>

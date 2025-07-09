@@ -1,11 +1,10 @@
-import {createBrowserRouter} from "react-router-dom";
-import {App} from "./App";
-import {Home} from "./pages/home";
-import {Posts} from "./pages/posts";
-import {PostPage} from "./pages/post";
-import {ContactPage} from "./pages/contact";
-import React from "react";
-import {Admin} from "./pages/admin";
+import { createBrowserRouter } from "react-router-dom";
+import { App } from "./App";
+import { Home } from "./pages/home";
+import { Posts } from "./pages/posts";
+import { PostPage } from "./pages/post";
+import { ContactPage } from "./pages/contact";
+import { Admin } from "./pages/admin";
 
 export const router = createBrowserRouter([
   {
@@ -25,13 +24,13 @@ export const router = createBrowserRouter([
         element: <PostPage />,
       },
       {
-        path: '/contact',
+        path: "/contact",
         element: <ContactPage />,
       },
       {
-        path: '/admin',
-        element: <Admin />
-      }
+        path: "/admin",
+        element: <Admin />,
+      },
     ],
   },
 ]);
