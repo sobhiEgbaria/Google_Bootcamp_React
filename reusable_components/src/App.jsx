@@ -5,10 +5,10 @@ import ContextApi from "./components/ContextApi";
 function App() {
   return (
     <>
-      <Counter />
+      {/* <Counter />
       <Form />
       <DataFetching />
-      <ContextApi />
+      <ContextApi /> */}
     </>
   );
 }
